@@ -31,13 +31,22 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      
+      - name: Debug - List repository contents
+        run: |
+          echo "Repository contents:"
+          ls -la
+          echo "---------------------"
+          
       - name: Setup Pages
         uses: actions/configure-pages@v5
+        
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
-          path: '.'
+          # Upload from the correct location - modify this if your site files are in a subfolder
+          path: './'  # Change this to the folder containing your HTML files
+          
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
